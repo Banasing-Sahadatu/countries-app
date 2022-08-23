@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react'
       const [isPending, setIsPending] = useState(false);
 
       useEffect(() => {
+          setIsPending(true);
           fetch("http://restcountries.com/v3.1/all")
               .then((res) => res.json())
               .then((data) => {
@@ -13,7 +14,7 @@ import React, { useEffect, useState } from 'react'
               )
               .catch(err => console.log('error :', err))
               .finally(() => {
-                  setIsPending(false);
+                setIsPending(false);
               });
       }, []);
       if(isPending) return <h1>Loading...</h1>
